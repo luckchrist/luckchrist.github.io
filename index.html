@@ -1,30 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Quality Control</title>
+  <head>
+    <title>Quality Control</title>
 
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/styles.css" rel="stylesheet">
-    </head>
-    <body>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-sm-8 col-xs-12 col-md-offset-3 col-sm-offset-2">
-                    <div class="card">
-                        <div class="image">
-                            <img src="img/thumbnail.jpg" width="100%" alt="">
-                        </div>
-                        <div class="text">
-                            <h4>Pengendalian Mutu Sambal pada PT. Gunacipta Multirasa dengan Menggunakan Diagram Kontrol Non-parametrik</h4>
-                            <label class="btn btn-block btn-danger">
-                                Browse file&hellip; <input type="file" id="file" name="file" enctype="multipart/form-data" style="display: none;">
-                            </label>
-                        </div>
-                    </div>
-                </div>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-8 col-xs-12 col-md-offset-3 col-sm-offset-2">
+          <div class="card">
+            <div class="image">
+              <img src="img/thumbnail.jpg" width="100%" alt="">
             </div>
+            <div class="text">
+              <h4>Pengendalian Mutu Sambal pada PT. Gunacipta Multirasa dengan Menggunakan Diagram Kontrol Non-parametrik</h4>
+              <form>
+                <div class="form-group">
+                  <label for="miu0">&mu;0</label>
+                  <input type="number" class="form-control" id="miu0" value="39" min="0">
+                </div>
+                <div class="form-group">
+                  <label for="miu0">Brix Interval</label>
+                  <input type="number" class="form-control" id="interval" value="3" min="1">
+                </div>
+                <div class="form-group">
+                  <label for="file">CSV File</label>
+                  <label class="btn btn-block btn-default">
+                    Browse file&hellip; <input type="file" id="file" name="file" enctype="multipart/form-data" style="display: none;">
+                  </label>
+                </div>
+                <button type="button" id="btnSubmit" class="btn btn-default">Submit</button>
+              </form>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
 
-        <script src="js/scripts.js"></script>
-    </body>
+    <script src="js/scripts.js"></script>
+  </body>
 </html>
