@@ -133,8 +133,54 @@ function processData() {
       _arrNewData[i][13] = (_arrNewData[i][6] > _arrNewData[i][10]) ? "Out" : (_arrNewData[i][6] < _arrNewData[i][12]) ? "Out" : "In";
     }
 
-    console.log(_arrNewData.join("\n"));
-    alert("Data sesuai Excel:\n\n" + _arrNewData.join("\n"));
+    // console.log(_arrNewData.join("\n"));
+    // alert("Data sesuai Excel:\n\n" + _arrNewData.join("\n"));
+
+    $('#modChart').on('show.bs.modal', function(event) {
+      var source = [];
+      for (var i = 0; i < _arrNewData.length; i++) {
+        source.push(_arrNewData[i][6]);
+      }
+      var labels = Array.apply(null, {length: _arrNewData.length}).map(Number.call, Number);
+      var target = [];
+      for (var i = 0; i < _arrNewData.length; i++) {
+        target.push(_arrNewData[i][10]);
+      }
+      // Chart initialization
+      var modal = $(this);
+      var canvas = modal.find('.modal-body canvas');
+      var ctx = canvas[0].getContext("2d");
+      var chart = new Chart(ctx).Line({
+        responsive: true,
+        labels: labels,
+        datasets: [{
+          fillColor: "rgba(151, 187, 205, 0.2)",
+          strokeColor: "rgba(151, 187, 205, 1)",
+          pointColor: "rgba(151, 187, 205, 1)",
+          pointStrokeColor: "#fff",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(151, 187, 205, 1)",
+          data: source
+        }, {
+          fillColor: "rgba(220, 220, 220, 0.2)",
+          strokeColor: "#f7464a",
+          pointColor: "#ff5a5e",
+          pointStrokeColor: "#ff5a5e",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "red",
+          data: target
+        }]
+      });
+    }).on('hidden.bs.modal', function(event) {
+      var modal = $(this);
+      var canvas = modal.find('.modal-body canvas');
+      canvas
+        .attr('width', '568px')
+        .attr('height', '300px');
+      $(this).data('bs.modal', null);
+    });
+
+    $('#modChart').modal('show');
   };
   reader.readAsText(file);
 }

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Quality Control</title>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -39,6 +42,26 @@
       </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="modChart" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title" id="modalLabel">Plot result</h4>
+          </div>
+          <div class="modal-body">
+            <canvas id="canvas" width="568" height="300"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.1/Chart.min.js"></script>
     <script src="js/scripts.js"></script>
   </body>
 </html>
