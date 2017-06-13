@@ -142,9 +142,13 @@ function processData() {
         source.push(_arrNewData[i][6]);
       }
       var labels = Array.apply(null, {length: _arrNewData.length}).map(Number.call, Number);
-      var target = [];
+      var target1 = [];
       for (var i = 0; i < _arrNewData.length; i++) {
-        target.push(_arrNewData[i][10]);
+        target1.push(_arrNewData[i][12]);
+      }
+      var target2 = [];
+      for (var i = 0; i < _arrNewData.length; i++) {
+        target2.push(_arrNewData[i][10]);
       }
       // Chart initialization
       var modal = $(this);
@@ -168,7 +172,15 @@ function processData() {
           pointStrokeColor: "#ff5a5e",
           pointHighlightFill: "#fff",
           pointHighlightStroke: "red",
-          data: target
+          data: target1
+        }, {
+          fillColor: "rgba(220, 220, 220, 0.2)",
+          strokeColor: "#f7464a",
+          pointColor: "#ff5a5e",
+          pointStrokeColor: "#ff5a5e",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "red",
+          data: target2
         }]
       });
     }).on('hidden.bs.modal', function(event) {
