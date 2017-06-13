@@ -141,14 +141,15 @@ function processData() {
       for (var i = 0; i < _arrNewData.length; i++) {
         source.push(_arrNewData[i][6]);
       }
-      var labels = Array.apply(null, {length: _arrNewData.length}).map(Number.call, Number);
+      var labels = Array.from({length: _arrNewData.length}, (v, k) => k + 1);
       var target1 = [];
       for (var i = 0; i < _arrNewData.length; i++) {
-        target1.push(_arrNewData[i][12]);
+        target1.push(_arrNewData[i][10]);
       }
       var target2 = [];
       for (var i = 0; i < _arrNewData.length; i++) {
-        target2.push(_arrNewData[i][10]);
+        _arrNewData[i][12] = (_arrNewData[i][12] < 0) ? 0 : _arrNewData[i][12];
+        target2.push(_arrNewData[i][12]);
       }
       // Chart initialization
       var modal = $(this);
@@ -183,6 +184,12 @@ function processData() {
           data: target2
         }]
       });
+      for (var i = 0; i < chart.datasets[0].points.length; i++) {
+        if (chart.datasets[0].points[i].value > _arrNewData[i][10]) {
+          chart.datasets[0].points[i].fillColor = "#ff5a5e";
+        }
+      }
+      chart.update();
     }).on('hidden.bs.modal', function(event) {
       var modal = $(this);
       var canvas = modal.find('.modal-body canvas');
