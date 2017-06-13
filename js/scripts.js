@@ -167,12 +167,12 @@ function processData() {
           pointHighlightStroke: "rgba(151, 187, 205, 1)",
           data: source
         }, {
-          fillColor: "rgba(220, 220, 220, 0.2)",
-          strokeColor: "#f7464a",
-          pointColor: "#ff5a5e",
-          pointStrokeColor: "#ff5a5e",
+          fillColor: "rgba(35, 216, 24, 0.2)",
+          strokeColor: "#1baf12",
+          pointColor: "#1ec714",
+          pointStrokeColor: "#1ec714",
           pointHighlightFill: "#fff",
-          pointHighlightStroke: "red",
+          pointHighlightStroke: "green",
           data: target1
         }, {
           fillColor: "rgba(220, 220, 220, 0.2)",
