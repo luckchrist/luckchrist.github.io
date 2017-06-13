@@ -48,7 +48,7 @@ function processData() {
     _arrData.splice(0, 1);
 	  _arrData.splice(_arrData.length - 1, 1);
 	
-    var _miu0 = parseInt(document.getElementById('miu0').value);
+    var _miu0 = document.getElementById('miu0').value;
     var _interval = parseInt(document.getElementById('interval').value);
 
     var _ct = 0;
@@ -185,7 +185,7 @@ function processData() {
         }]
       });
       for (var i = 0; i < chart.datasets[0].points.length; i++) {
-        if (chart.datasets[0].points[i].value > _arrNewData[i][10]) {
+        if (chart.datasets[0].points[i].value > _arrNewData[i][10] || chart.datasets[0].points[i].value < _arrNewData[i][12]) {
           chart.datasets[0].points[i].fillColor = "#ff5a5e";
         }
       }
