@@ -183,6 +183,8 @@ function processData() {
           pointHighlightStroke: "red",
           data: target2
         }]
+      }, {
+        pointHitDetectionRadius: 1
       });
       for (var i = 0; i < chart.datasets[0].points.length; i++) {
         if (chart.datasets[0].points[i].value > _arrNewData[i][10] || chart.datasets[0].points[i].value < _arrNewData[i][12]) {
