@@ -208,7 +208,7 @@ function processData() {
       // Chart initialization
       var modal = $(this);
       var canvas = modal.find('.modal-body canvas');
-      var ctx = canvas[0].getContext("2d");
+      var ctx = canvas[1].getContext("2d");
       var chart = new Chart(ctx).Line({
         responsive: true,
         labels: labels,
@@ -261,7 +261,7 @@ function processData() {
         target2_1.push(_interval);
       }
       var canvas = modal.find('.modal-body canvas');
-      var ctx2 = canvas[1].getContext("2d");
+      var ctx2 = canvas[0].getContext("2d");
       var chart2 = new Chart(ctx2).Line({
         responsive: true,
         labels: labels2,
