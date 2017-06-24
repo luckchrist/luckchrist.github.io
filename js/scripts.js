@@ -42,6 +42,8 @@ function processData() {
   var reader = new FileReader();
   reader.onload = function() {
     var _data = this.result;
+
+    // Rata-rata
     var _arrData = CSVToArray(_data);
 	
     // Remove header
@@ -136,7 +138,59 @@ function processData() {
     // console.log(_arrNewData.join("\n"));
     // alert("Data sesuai Excel:\n\n" + _arrNewData.join("\n"));
 
+    // Varians
+    var _arrDataDiagram2 = CSVToArray(_data);
+    // Remove header
+    _arrDataDiagram2.splice(0, 1);
+	  _arrDataDiagram2.splice(_arrDataDiagram2.length - 1, 1);
+
+    var brixData = [];
+    for (var i = 0; i < _arrDataDiagram2.length; i++) {
+      brixData.push(_arrDataDiagram2[i][1]);
+    }
+    var sortedData = brixData.sort((a, b) => {
+      return a - b;
+    });
+    var Q1 = sortedData[Math.ceil((25 / 100) * _arrDataDiagram2.length) - 1];
+    var Q3 = sortedData[Math.ceil((75 / 100) * _arrDataDiagram2.length) - 1];
+    for (var i = 0; i < _arrDataDiagram2.length; i++) {
+      if (_arrDataDiagram2[i][1] < Q1 || _arrDataDiagram2[i][1] > Q3) {
+        _arrDataDiagram2[i][1] = 1;
+      } else if (_arrDataDiagram2[i][1] === Q1 || _arrDataDiagram2[i][1] === Q3) {
+        _arrDataDiagram2[i][1] = 0;
+      } else {
+        _arrDataDiagram2[i][1] = -1;
+      }
+    }
+
+    // Get Sigma U
+    var _ct = 0;
+    for (var i = 1; i <= _arrDataDiagram2.length; i++) {
+      var uij = _arrDataDiagram2[i - 1][1];
+
+      _ct += uij;
+
+      _arrDataDiagram2[i - 1][2] = 'x';
+
+      if (i % _interval == 0) {
+        _arrDataDiagram2[i - 1][2] = _ct;
+        _ct = 0;
+      }
+    };
+
+    // Filtering for Sigma U = null
+    _arrDataDiagram2 = _arrDataDiagram2.filter((x) => {
+      return x[2] !== 'x';
+    });
+
+    console.log(_arrDataDiagram2);
+
     $('#modChart').on('show.bs.modal', function(event) {
+
+      /**
+       * Diagram 2
+       * Rata-rata
+       */
       var source = [];
       for (var i = 0; i < _arrNewData.length; i++) {
         source.push(_arrNewData[i][6]);
@@ -168,19 +222,19 @@ function processData() {
           data: source
         }, {
           fillColor: "rgba(35, 216, 24, 0.2)",
-          strokeColor: "#1baf12",
-          pointColor: "#1ec714",
-          pointStrokeColor: "#1ec714",
+          strokeColor: "black",
+          pointColor: "black",
+          pointStrokeColor: "black",
           pointHighlightFill: "#fff",
-          pointHighlightStroke: "green",
+          pointHighlightStroke: "black",
           data: target1
         }, {
           fillColor: "rgba(220, 220, 220, 0.2)",
-          strokeColor: "#f7464a",
-          pointColor: "#ff5a5e",
-          pointStrokeColor: "#ff5a5e",
+          strokeColor: "black",
+          pointColor: "black",
+          pointStrokeColor: "black",
           pointHighlightFill: "#fff",
-          pointHighlightStroke: "red",
+          pointHighlightStroke: "black",
           data: target2
         }]
       }, {
@@ -192,6 +246,52 @@ function processData() {
         }
       }
       chart.update();
+
+      /**
+       * Diagram 1
+       * Rata-rata
+       */
+      var source2 = [];
+      for (var i = 0; i < _arrDataDiagram2.length; i++) {
+        source2.push(Math.abs(_arrDataDiagram2[i][2]));
+      }
+      var labels2 = Array.from({length: _arrDataDiagram2.length}, (v, k) => k + 1);
+      var target2_1 = [];
+      for (var i = 0; i < _arrDataDiagram2.length; i++) {
+        target2_1.push(_interval);
+      }
+      var canvas = modal.find('.modal-body canvas');
+      var ctx2 = canvas[1].getContext("2d");
+      var chart2 = new Chart(ctx2).Line({
+        responsive: true,
+        labels: labels2,
+        datasets: [{
+          fillColor: "rgba(151, 187, 205, 0.2)",
+          strokeColor: "rgba(151, 187, 205, 1)",
+          pointColor: "rgba(151, 187, 205, 1)",
+          pointStrokeColor: "#fff",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(151, 187, 205, 1)",
+          data: source2
+        }, {
+          fillColor: "rgba(35, 216, 24, 0.2)",
+          strokeColor: "black",
+          pointColor: "black",
+          pointStrokeColor: "black",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "black",
+          data: target2_1
+        }]
+      }, {
+        pointHitDetectionRadius: 1
+      });
+      for (var i = 0; i < chart2.datasets[0].points.length; i++) {
+        if (chart2.datasets[0].points[i].value >= _interval) {
+          chart2.datasets[1].points[i].fillColor = "#ff5a5e";
+        }
+      }
+      chart2.update();
+
     }).on('hidden.bs.modal', function(event) {
       var modal = $(this);
       var canvas = modal.find('.modal-body canvas');
