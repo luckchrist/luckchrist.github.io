@@ -183,8 +183,6 @@ function processData() {
       return x[2] !== 'x';
     });
 
-    console.log(_arrDataDiagram2);
-
     $('#modChart').on('show.bs.modal', function(event) {
 
       /**
