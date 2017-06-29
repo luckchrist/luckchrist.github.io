@@ -10,6 +10,18 @@
     <link href="css/styles.css" rel="stylesheet">
   </head>
   <body>
+    <nav class="navbar navbar-inverse navbar-static-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.html">Quality Control</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </div>
+    </nav>
+
     <div class="container">
       <div class="row">
         <div class="col-md-6 col-sm-8 col-xs-12 col-md-offset-3 col-sm-offset-2">
@@ -55,8 +67,10 @@
           <div class="modal-body">
             <h3>Diagram Kontrol <i>Sign Chart</i></h3>
             <canvas id="canvas" width="568" height="300"></canvas>
+            <h6 id="diagram1_desc"></h6>
             <h3>Diagram Kontrol Ewma Non-Parametrik</h3>
             <canvas id="canvas2" width="568" height="300"></canvas>
+            <h6 id="diagram2_desc"></h6>
           </div>
         </div>
       </div>

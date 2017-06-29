@@ -238,19 +238,46 @@ function processData() {
       }, {
         pointHitDetectionRadius: 1
       });
+      var out_points_top = [],
+          out_points_bottom = [];
       for (var i = 0; i < chart.datasets[0].points.length; i++) {
         if (chart.datasets[0].points[i].value > _arrNewData[i][10] || chart.datasets[0].points[i].value < _arrNewData[i][12]) {
+          if (chart.datasets[0].points[i].value > _arrNewData[i][10]) out_points_top.push(i + 1);
+          else if (chart.datasets[0].points[i].value < _arrNewData[i][12]) out_points_bottom.push(i + 1);
           chart.datasets[0].points[i].fillColor = "#ff5a5e";
         }
       }
       chart.update();
+      var txt = "";
+      if (out_points_top.length) {
+        txt = "Pada subgrup ke ";
+        for (var i = 0; i < out_points_top.length; i++) {
+          txt += out_points_top[i];
+          if (i !== out_points_top.length - 1) txt += ", ";
+        }
+        txt += ", titik yang keluar dari batas kontrol ada variabel pengamatan yang lebih tinggi pada subgrup tersebut.<br/>";
+      }
+      if (out_points_bottom.length) {
+        var txt2 = "Pada subgrup ke ";
+        for (var i = 0; i < out_points_bottom.length; i++) {
+          txt2 += out_points_bottom[i];
+          if (i < out_points_bottom.length - 1) txt2 += ", ";
+        }
+        txt2 += ", titik yang keluar dari batas kontrol ada variabel pengamatan yang lebih rendah pada subgrup tersebut.";
+        txt += txt2;
+      }
+      $('#diagram2_desc').html(txt);
 
       /**
        * Diagram 1
        * Rata-rata
        */
       var source2 = [];
+      var out_points_positive = [],
+          out_points_negative = [];
       for (var i = 0; i < _arrDataDiagram2.length; i++) {
+        if (_arrDataDiagram2[i][2] === _interval) out_points_positive.push(i + 1)
+        else if (_arrDataDiagram2[i][2] === (-1 * _interval)) out_points_negative.push(i + 1);
         source2.push(Math.abs(_arrDataDiagram2[i][2]));
       }
       var labels2 = Array.from({length: _arrDataDiagram2.length}, (v, k) => k + 1);
@@ -289,6 +316,26 @@ function processData() {
         }
       }
       chart2.update();
+      var txt3 = "";
+      if (out_points_positive.length) {
+        txt3 = "Pada subgrup ke ";
+        for (var i = 0; i < out_points_positive.length; i++) {
+          txt3 += out_points_positive[i];
+          if (i !== out_points_positive.length - 1) txt3 += ", ";
+        }
+        txt3 += ", menunjukkan bahwa variabel pengamatan pada subgrup tersebut terlalu tinggi atau terlalu rendah dan tidak ada variasi yang terjadi.<br/>";
+      }
+      if (out_points_negative.length) {
+        var txt4 = "Pada subgrup ke ";
+        for (var i = 0; i < out_points_negative.length; i++) {
+          txt4 += out_points_negative[i];
+          if (i < out_points_negative.length - 1) txt4 += ", ";
+        }
+        txt4 += ", menyebar di antara kuartil 1 dan kuartil 3 dan tidak ada data yang tepat atau sesuai dengan spesifikasi batas bawah kuartil 1 dan tidak sesuai " + 
+                "dengan batas atas kuartil 3 dan semua data pada subgrup tersebut tidak ada variasi lain selain menyebar di sekitar kuartil 1 dan kuartil 3.";
+        txt3 += txt4;
+      }
+      $('#diagram1_desc').html(txt3);
 
     }).on('hidden.bs.modal', function(event) {
       var modal = $(this);
