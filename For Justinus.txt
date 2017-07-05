@@ -1,0 +1,93 @@
+STATISTIK PROGRAM
+________________________________________________________________________
+Halaman home
+
+Gambar di ganti dengan Nama Aplikasi
+
+Nama app:
+Pengendalian Proses dengan Diagram Kontrol Non-Parametrik
+
+Kalimat:
+Pengendalian Mutu Sambal pada PT. Gunacipta Multirasa dengan Menggunakan Diagram Kontrol Non-parametrik
+
+dihapus
+
+
+Halaman How to Use
+
+INTRODUCTION:
+Aplikasi ini digunakan jika data tidak berdistribusi normal.
+dalam aplikasi ini ada 2 proses yang dikendalikan yaitu proses pengendalian variabilitas dan rata-rata
+proses pengendalian variabilitas dengan menggunakan diagram kontrol sign chart dan proses pengendalian rata-rata menggunakan diagram kontrol EWMA Non-Parametrik.
+
+Berikut beberapa cara untuk menggunakan aplikasi
+1. memasukan spesifikasi perusahaan (harus berupa angka)
+2. memasukan jumlah sampel di tiap subgrup (harus berupa angka bulat)
+3. Browse file, memilih file .csv untuk diupload
+4. klik tombol open
+5. klik tombol submit
+
+Spesifikasi perusahaan adalah standar yang diberikan suatu perusahaan terhadap suatu produk
+Contoh: Berat suatu produk makanan yang ditentukan perusahaan adalah 100gr
+
+Jumlah sampel di tiap subgrup adalah banyaknya pengamatan yang diambil untuk setiap subgrup.
+Contoh: Dalam 1 minggu diambil 3 pengamatan pada minggu tersebut secara random, misal hari senin, rabu, jumat atau rabu, kamis, jumat.
+	Dalam 1 bulan diambil 5 pengamatan pada bulan tersebut secara random, misal tanggal 1, 8, 13, 21, 29 atau 3, 9, 15, 24, 30 .
+
+Contoh Data csv, dapat download (disini). <- Link ke server berupa Zip.
+
+Cara Membaca Hasil Diagram.
+
+Diagram akan muncul setelah tombol submit di klik, apabila ada titik yang berada di atas UCL atau ada titik di bawah LCL, maka titik atau subgrup tersebut keluar dari batas kontrol atau out of control.
+
+___________________________________________________________________________
+Halaman About Us
+
+Pengendalian Proses dengan Diagram Kontrol Non-Parametrik dibentuk untuk mempermudah mengidentifikasi proses yang tidak terkendali. Pengendalian Proses dengan Diagram Kontrol Non-Parametrik adalah proyek akhir yang dibuat sebagai syarat kelulusan di Binus University, Indonesia. Pembuat percaya aplikasi ini membutuhkan banyak perbaikan, jika Anda memiliki pertanyaan atau saran, Anda dapat memberitahu dengan mengirim email.
+
+Created By:
+
+(Foto gw)
+Lucky Christian
+
+Supervised By:
+
+(Foto Pak Ferdinand)
+Ferdinand Ariandy Luwinda, S.Kom., M.T.I.
+
+(Foto Miss Diana)
+Syarifah Diana Permai, S.Si, M.Si.
+
+Supported by:
+(Logo Binus Univ)
+
+
+Halaman Hasil / Result
+___________________________________________________________________________
+Interpretasi:
+Diagram Sign Chart:
+Pada subgrup ke ...,...,dan ... menunjukan bahwa proses pengendalian variabilitas pada subgrup tersebut berada diluar batas kontrol. Oleh karena itu dapat disimpulkan bahwa proses belum terkendali secara statistik.
+
+Diagram EWMA Non-Parametrik:
+Pada subgrup ke ...,...,dan ... menunjukan bahwa proses pengendalian rata-rata pada subgrup tersebut berada diluar batas kontrol. Oleh karena itu dapat disimpulkan bahwa proses belum terkendali secara statistik.
+
+
+Sama di tambah Hasil ketika diagram kontrol, in control
+Diagram Sign Chart:
+Proses pengendalian variabilitas pada seluruh subgrup berada di dalam kontrol atau in control. Oleh karena itu dapat disimpulkan bahwa proses telah terkendali secara statistik.
+
+Diagram EWMA Non-Parametrik:
+Proses pengendalian rata-rata pada seluruh subgrup berada di dalam kontrol atau in control. Oleh karena itu dapat disimpulkan bahwa proses telah terkendali secara statistik.
+
+
+IT PROGRAM
+________________________________________________________________________
+1. Validasi ketika tombol Browse Files di klik. di kanan bawah ada all files. diubah menjadi CSV saja.
+2. Tiap Submit harus refresh home, bikin jadi submit 2x diagram tetap baik.
+
+
+IT PENULISAN
+________________________________________________________________________
+1. Tambah Use case, Activity Diagram dan Use case Narrative
+2. Tambah 2 subbab bab 2, yaitu 8 Aturan emas, dan 5 faktor Manusia Terukur.
+3. Tambah 3 subbab bab 4, yaitu 8 aturan emas, 5 faktor manusia terukur, dan wawancara yang berhubungan dengan tujuan dan 5 faktor manusia terukur.

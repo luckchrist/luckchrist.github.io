@@ -23,16 +23,9 @@ body {
 }
 
 .image {
-  height: 200px;
-  opacity: .7;
+  height: 240px;
   overflow: hidden;
   transition: all .2s ease-in-out;
-}
-
-.image:hover,
-.card:hover .image {
-  height: 200px;
-  opacity: 1;
 }
 
 .text {

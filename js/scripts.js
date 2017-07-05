@@ -35,6 +35,7 @@ function CSVToArray(strData, strDelimiter) {
 
 function getFile(evt) {
   files = evt.target.files;
+  $('#fileName').html($('#file').val());
 }
 
 function processData() {

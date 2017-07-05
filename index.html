@@ -31,7 +31,6 @@
               <img src="img/thumbnail.jpg" width="100%" alt="">
             </div>
             <div class="text">
-              <h4>Pengendalian Mutu Sambal pada PT. Gunacipta Multirasa dengan Menggunakan Diagram Kontrol Non-parametrik</h4>
               <form>
                 <div class="form-group">
                   <label for="miu0">Spesifikasi perusahaan</label>
@@ -44,8 +43,9 @@
                 <div class="form-group">
                   <label for="file">CSV File</label>
                   <label class="btn btn-block btn-default">
-                    Browse file&hellip; <input type="file" id="file" name="file" enctype="multipart/form-data" style="display: none;">
+                    Browse file&hellip; <input type="file" id="file" name="file" enctype="multipart/form-data" accept=".csv" style="display: none;">
                   </label>
+                  <label id="fileName" class="label label-success"></label>
                 </div>
                 <button type="button" id="btnSubmit" class="btn btn-default">Submit</button>
               </form>
