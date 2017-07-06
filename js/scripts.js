@@ -35,7 +35,15 @@ function CSVToArray(strData, strDelimiter) {
 
 function getFile(evt) {
   files = evt.target.files;
-  $('#fileName').html($('#file').val());
+  var fullPath = $('#file').val();
+  if (fullPath) {
+    var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+    var filename = fullPath.substring(startIndex);
+    if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+        filename = filename.substring(1);
+    }
+    $('#fileName').html("<span class=\"glyphicon glyphicon-ok\"></span> " + filename);
+  }
 }
 
 function processData() {
