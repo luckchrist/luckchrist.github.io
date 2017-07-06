@@ -250,22 +250,23 @@ function processData() {
       }
       chart.update();
       var txt = "";
-      if (out_points_top.length) {
+      if (out_points_top.length || out_points_bottom.length) {
         txt = "Pada subgrup ke ";
-        for (var i = 0; i < out_points_top.length; i++) {
-          txt += out_points_top[i];
-          if (i !== out_points_top.length - 1) txt += ", ";
+
+        var all_points = [];
+        for (var i = 0; i < out_points_top.length; i++) all_points.push(out_points_top[i]);
+        for (var i = 0; i < out_points_bottom.length; i++) all_points.push(out_points_bottom[i]);
+        all_points = all_points.sort((a, b) => {
+          return a - b;
+        });
+
+        for (var i = 0; i < all_points.length; i++) {
+          txt += all_points[i];
+          if (i !== all_points.length - 1) txt += ", ";
         }
-        txt += ", titik yang keluar dari batas kontrol ada variabel pengamatan yang lebih tinggi pada subgrup tersebut.<br/>";
-      }
-      if (out_points_bottom.length) {
-        var txt2 = "Pada subgrup ke ";
-        for (var i = 0; i < out_points_bottom.length; i++) {
-          txt2 += out_points_bottom[i];
-          if (i < out_points_bottom.length - 1) txt2 += ", ";
-        }
-        txt2 += ", titik yang keluar dari batas kontrol ada variabel pengamatan yang lebih rendah pada subgrup tersebut.";
-        txt += txt2;
+        txt += " menunjukkan bahwa proses pengendalian rata-rata pada subgrup tersebut berada di luar batas kontrol. Oleh karena itu, dapat disimpulkan bahwa proses belum terkendali secara statistik.";
+      } else {
+        txt = "Proses pengendalian rata-rata pada seluruh subgrup berada di dalam kontrol atau <i>in control</i>. Oleh karena itu, dapat disimpulkan bahwa proses telah terkendali secara statistik.";
       }
       $('#diagram2_desc').html(txt);
 
@@ -318,23 +319,23 @@ function processData() {
       }
       chart2.update();
       var txt3 = "";
-      if (out_points_positive.length) {
+      if (out_points_positive.length || out_points_negative.length) {
         txt3 = "Pada subgrup ke ";
-        for (var i = 0; i < out_points_positive.length; i++) {
-          txt3 += out_points_positive[i];
-          if (i !== out_points_positive.length - 1) txt3 += ", ";
+        
+        var all_points = [];
+        for (var i = 0; i < out_points_positive.length; i++) all_points.push(out_points_positive[i]);
+        for (var i = 0; i < out_points_negative.length; i++) all_points.push(out_points_negative[i]);
+        all_points = all_points.sort((a, b) => {
+          return a - b;
+        });
+
+        for (var i = 0; i < all_points.length; i++) {
+          txt3 += all_points[i];
+          if (i !== all_points.length - 1) txt3 += ", ";
         }
-        txt3 += ", menunjukkan bahwa variabel pengamatan pada subgrup tersebut terlalu tinggi atau terlalu rendah dan tidak ada variasi yang terjadi.<br/>";
-      }
-      if (out_points_negative.length) {
-        var txt4 = "Pada subgrup ke ";
-        for (var i = 0; i < out_points_negative.length; i++) {
-          txt4 += out_points_negative[i];
-          if (i < out_points_negative.length - 1) txt4 += ", ";
-        }
-        txt4 += ", menyebar di antara kuartil 1 dan kuartil 3 dan tidak ada data yang tepat atau sesuai dengan spesifikasi batas bawah kuartil 1 dan tidak sesuai " + 
-                "dengan batas atas kuartil 3 dan semua data pada subgrup tersebut tidak ada variasi lain selain menyebar di sekitar kuartil 1 dan kuartil 3.";
-        txt3 += txt4;
+        txt3 += " menunjukkan bahwa proses pengendalian variabilitas pada subgrup tersebut berada di luar batas kontrol. Oleh karena itu, dapat disimpulkan bahwa proses belum terkendali secara statistik.";
+      } else {
+        txt3 = "Proses pengendalian variabilitas pada seluruh subgrup berada di dalam kontrol atau <i>in control</i>. Oleh karena itu, dapat disimpulkan bahwa proses telah terkendali secara statistik.";
       }
       $('#diagram1_desc').html(txt3);
 

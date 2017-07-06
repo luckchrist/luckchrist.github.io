@@ -43,18 +43,37 @@
                 <li>Klik tombol submit</li>
               </ol>
               <p>
-                Spesifikasi perusahaan adalah standar yang diberikan suatu perusahaan terhadap suatu produk.<br>
-                Contoh: Berat suatu produk makanan yang ditentukan perusahaan adalah 100gr.
-              </p>
-              <p>
-                Jumlah sampel di tiap subgrup adalah banyaknya pengamatan yang diambil untuk setiap subgrup.<br>
-                Contoh:<br>
-                Dalam 1 minggu diambil 3 pengamatan pada minggu tersebut secara random, misal hari Senin, Rabu, Jumat atau Rabu, Kamis, Jumat.<br>
-	              Dalam 1 bulan diambil 5 pengamatan pada bulan tersebut secara random, misal tanggal 1, 8, 13, 21, 29 atau 3, 9, 15, 24, 30.
-              </p>
-              <p>
                 Contoh data csv dapat diunduh <a href="Data.rar">di sini</a>.
               </p>
+              <p>
+                <b>Contoh cara menggunakan aplikasi:</b>
+              </p>
+              <ol>
+                <li>Memasukan spesifikasi perusahaan. Spesifikasi perusahaan adalah standar yang diberikan suatu perusahaan terhadap suatu produk.
+                Spesifikasi data Brix pada perusahaan ini adalah 39° Brix, maka memasukkan spesifikasi perusahaan sebesar 39.</li>
+
+                <li>Memasukkan jumlah sampel di tiap subgrup. Jumlah sampel di tiap subgrup adalah banyaknya pengamatan yang diambil untuk setiap subgrup.<br>
+                Contoh:<br>
+                Dalam 1 minggu diambil 3 pengamatan pada minggu tersebut secara random, misal hari Senin, Rabu, Jumat atau Selasa, Kamis, Jumat.<br>
+                Dalam 1 bulan diambil 5 pengamatan pada bulan tersebut secara random, misal tanggal 1, 8, 13, 21, 29 atau 3, 9, 15, 24, 30.<br>
+                Pada contoh data Brix dalam satu minggu diambil tiga pengamatan, maka jumlah sampel di tiap subgrup diisi 3.</li>
+
+                <li>Browse File, memilih file Brix.csv untuk diupload.</li>
+
+                <li>Klik tombol open.</li>
+
+                <li>Klik tombol submit
+                Diagram akan muncul setelah tombol submit di klik, apabila ada titik yang berada di atas UCL atau ada titik di bawah LCL, maka titik atau subgrup tersebut keluar dari batas kontrol atau <i>out of control</i>.<br>
+                Pada data brix, hasil diagram sebagai berikut:
+                <br>
+                Diagram Kontrol Sign Chart<br>
+                (Gambar Diagram)<br>
+                Pada subgrup ke 13, 15, 16, 19, 38, 45, dan 47 menunjukan bahwa proses pengendalian variabilitas pada subgrup tersebut di luar batas kontrol. Oleh karena itu dapat disimpulkan bahwa proses belum terkendali secara statistik.
+                <br>
+                Diagram EWMA Non-parametrik<br>
+                (Gambar Diagram)<br>
+                Pada subgrup ke 11, 12, 18, 36, 38, dan 47 menunjukan bahwa proses pengendalian rata-rata pada subgrup tersebut berada di luar batas kontrol. Oleh karena itu dapat disimpulkan bahwa proses belum terkendali secara statistik.</li>
+              </ol>
               <p>
                 <b>Cara membaca hasil diagram:</b><br>
                 Diagram akan muncul setelah tombol submit diklik, apabila ada titik yang berada di atas UCL atau ada titik di bawah LCL, maka titik atau subgrup tersebut keluar dari batas kontrol atau <i>out of control</i>.
