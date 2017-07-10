@@ -33,6 +33,10 @@ function CSVToArray(strData, strDelimiter) {
   return(arrData);
 }
 
+function isNumber(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
 function getFile(evt) {
   files = evt.target.files;
   var fullPath = $('#file').val();
@@ -49,8 +53,12 @@ function getFile(evt) {
 function processData() {
   if (!document.getElementById('miu0').value) {
     alert("Spesifikasi perusahaan harus diisi");
+  } else if (!isNumber(document.getElementById('miu0').value)) {
+    alert("Spesifikasi perusahaan harus numerik");
   } else if (!document.getElementById('interval').value) {
     alert("Jumlah sampel di tiap subgrup harus diisi");
+  } else if (!isNumber(document.getElementById('interval').value)) {
+    alert("Jumlah sampel di tiap subgrup harus numerik");
   } else if (files === null) {
     alert("File tidak boleh kosong");
   } else {
