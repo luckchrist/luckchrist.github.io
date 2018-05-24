@@ -1,85 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Quality Control</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Marketing App</title>
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
-  </head>
-  <body>
-    <nav class="navbar navbar-inverse navbar-static-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="index.html">Quality Control</a>
-        </div>
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="index.html">Home</a></li>
-          <li><a href="how-to-use.html">How to Use</a></li>
-          <li><a href="about.html">About Us</a></li>
-        </ul>
-      </div>
-    </nav>
+  <!-- Bootstrap Core CSS -->
+  <link href="css/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
 
+  <!-- Main stylesheet -->
+  <link href="css/main.css" rel="stylesheet">
+
+  <!-- Plugin stylesheets -->
+  <link href="css/plugins/jquery.mb.YTPlayer.min.css" rel="stylesheet">
+  <link href="css/plugins/animate.css" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body id="home">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
     <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-sm-8 col-xs-12 col-md-offset-3 col-sm-offset-2">
-          <div class="card">
-            <div class="image">
-              <img src="img/thumbnail.jpg" width="100%" alt="">
-            </div>
-            <div class="text">
-              <form>
-                <div class="form-group">
-                  <label for="miu0">Spesifikasi perusahaan</label>
-                  <input type="number" class="form-control" id="miu0" value="39" min="0">
-                </div>
-                <div class="form-group">
-                  <label for="interval">Jumlah sampel di tiap subgrup</label>
-                  <input type="number" class="form-control" id="interval" value="3" min="1">
-                </div>
-                <div class="form-group">
-                  <label for="file">CSV File</label>
-                  <label class="btn btn-block btn-default">
-                    Browse file&hellip; <input type="file" id="file" name="file" enctype="multipart/form-data" accept=".csv" style="display: none;">
-                  </label>
-                  <label id="fileName" class="label label-success"></label>
-                </div>
-                <button type="button" id="btnSubmit" class="btn btn-default">Submit</button>
-              </form>
-            </div>
-          </div>
+      <div class="navbar-header pull-left">
+        <a class="navbar-brand page-scroll" href="index.html">
+          <span class="brand-logo"><img src="img/logo_navbar.png" alt="Logo Vislog" class="img-responsive"></span>
+        </a>
+      </div>
+      <div class="main-nav pull-right">
+        <div class="button_container toggle">
+          <span class="top"></span>
+          <span class="middle"></span>
+          <span class="bottom"></span>
         </div>
       </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="modChart" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">
-              <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-            </button>
-            <h4 class="modal-title" id="modalLabel">Plot result</h4>
-          </div>
-          <div class="modal-body">
-            <h3>Diagram Kontrol <i>Sign Chart</i></h3>
-            <canvas id="canvas" width="568" height="300"></canvas>
-            <h6 id="diagram1_desc"></h6>
-            <h3>Diagram Kontrol Ewma Non-Parametrik</h3>
-            <canvas id="canvas2" width="568" height="300"></canvas>
-            <h6 id="diagram2_desc"></h6>
-          </div>
-        </div>
+      <div class="overlay" id="overlay">
+        <nav class="overlay-menu">
+          <ul>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Contact us</a></li>
+          </ul>
+        </nav>
       </div>
     </div>
+  </nav>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.1/Chart.min.js"></script>
-    <script src="js/scripts.js"></script>
-  </body>
+  <!-- Intro Header -->
+  <header id="intro-carousel" class="carousel slide">
+    <div class="carousel-inner">
+      <div class="item video-section active">
+        <a id="bgndVideo" class="player" data-property="{videoURL:'http://youtu.be/On1l6S6PvKM', containment:'.video-section', autoPlay:true, loop:true, mute:true, ratio:'16/9', startAt:4, quality:'hd720', opacity:1, showControls:false, addRaster:true, showYTLogo:false, vol:25}"></a>
+        <div class="carousel-caption">
+          <h1 class="animated slideInDown">Welcome to Vislog.</h1>
+          <p class="intro-text animated slideInUp">Integrated Advertising Analysis & Monitoring Tools</p>
+          <a href="login.html" class="btn btn-default btn-lg">Log In</a>
+        </div>
+        <div class="video-controls">
+          <a id="video-volume" class="fa fa-volume-off fa-lg" href="#"></a>
+          <a id="video-play" class="fa fa-pause fa-lg" href="#"></a>
+        </div>
+        <div class="overlay-detail"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- jQuery -->
+  <script src="js/jquery.min.js"></script>
+
+  <!-- Boostrap Core JavaScript -->
+  <script src="css/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="js/plugins/jquery.mb.YTPlayer.min.js"></script>
+
+  <!-- Custom JavaScript -->
+  <script src="js/script.js"></script>
+</body>
 </html>
